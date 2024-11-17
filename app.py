@@ -34,6 +34,8 @@ manager = ConnectionManager()
 
 app.websocket("/ws/")
 async def websocket_endpoint(websocket: WebSocket):
+    print("Headers received:", websocket.headers)
+    await websocket.accept()
     await manager.connect(websocket)
     try:
         while True:
